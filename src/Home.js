@@ -13,34 +13,25 @@ function Home() {
     getData();
   }, []);
   return (
-    <div class="container">
-			<div class="row">
-				<div class="col-10">
-					<h1 class="mt-3">List</h1>
-					<table class="table">
-						<thead class="table-dark">
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Nama</th>
-								<th scope="col">NIM</th>
-								<th scope="col">Email</th>
-								<th scope="col">Jurusan</th>
-								<th scope="col">Aksi</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">Hehe</th>
-								<td>Hehe</td>
-								<td>Hehe</td>
-								<td>Hehe</td>
-								<td>Hehe</td>
-								<td>
-									<a class="badge bg-success">detail</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+    <div className="container">
+			<div className="row">
+				<div className="col-10">
+					<h1 className="mt-3">List</h1>
+					<div style={{width: "100%"}} className="d-flex flex-wrap justify-content-between">
+            {
+              movies.map(item => {
+                return (
+                <div className="card mt-2" style={{width: "18rem", display:'inline'}}>
+                  <div className="card-body">
+                    <h5 className="card-title">{item.title}</h5>
+                    <h6 className="card-subtitle mb-2 text-muted">{item.tagline || "-"}</h6>
+                    <p className="card-text">{item.overview.slice}</p>
+                    <a className="card-link btn btn-success">Details</a>
+                  </div>
+                </div>)
+              })
+            }
+          </div>
 				</div>
 			</div>
 		</div>
