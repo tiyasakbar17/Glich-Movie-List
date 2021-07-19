@@ -19,9 +19,9 @@ function Detail() {
     <div className="container mt-5">
       <div class="jumbotron">
         <h1 class="display-4">{movie.title}</h1>
-        <span className="text-muted">{movie.status}</span>
+        <span className="text-muted">{movie.status}</span> <span className='text-muted'> - {movie.vote_average}/10 ({movie.vote_count} votes)</span>
         <br/>
-        <span>Release Date: {movie.release_date}</span>
+        <span>Release Date: {movie.release_date && new Date(movie.release_date.slice(3,6) + movie.release_date.slice(0,3) + movie.release_date.slice(6)).toString().slice(0,15)}</span>
         <p>Run Time: {movie.runtime} minutes</p>
         <p class="lead">{movie.tagline || "-"}</p>
         <hr class="my-4"/>

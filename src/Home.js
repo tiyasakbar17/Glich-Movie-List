@@ -34,7 +34,7 @@ function Home() {
                     <h5 className="card-title">{item.title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">{item.tagline || "-"}</h6>
                     <p className="card-text text-justify"><strong>Overview: </strong>{item.overview.slice(0,50)} ...</p>
-                    <h6 className="card-subtitle mb-2 font-weight-bold">({item.vote_average || "-"})</h6>
+                    <h6 className="card-subtitle mb-2 font-weight-bold">({item.vote_average || "-"}/10)</h6>
                     <a onClick={() => redirDetail(item.id)} className="card-link btn btn-success">Details</a>
                   </div>
                 </div>)
