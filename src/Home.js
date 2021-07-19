@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { pagesMapping, RoutingContext } from './Routing'
 
 function Home() {
+  const { setPage } = useContext(RoutingContext)
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function getData() {
@@ -21,12 +23,13 @@ function Home() {
             {
               movies.map(item => {
                 return (
-                <div className="card mt-2" style={{width: "18rem", display:'inline'}}>
+                <div className="card mt-2" style={{maxWidth: "250px"}}>
                   <div className="card-body">
                     <h5 className="card-title">{item.title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">{item.tagline || "-"}</h6>
-                    <p className="card-text">{item.overview.slice}</p>
-                    <a className="card-link btn btn-success">Details</a>
+                    <p className="card-text text-justify"><strong>Overview: </strong>{item.overview.slice(0,50)} ...</p>
+                    <h6 className="card-subtitle mb-2 font-weight-bold">({item.vote_average || "-"})</h6>
+                    <a onClick={() => setPage(pagesMapping.detail)} className="card-link btn btn-success">Details</a>
                   </div>
                 </div>)
               })
