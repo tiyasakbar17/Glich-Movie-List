@@ -4,7 +4,7 @@ import './App.css';
 import { pagesMapping, RoutingContext } from './Routing'
 
 function Home() {
-  const { setPage } = useContext(RoutingContext)
+  const { setPage, setDetail } = useContext(RoutingContext)
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     async function getData() {
@@ -14,6 +14,12 @@ function Home() {
     }
     getData();
   }, []);
+  
+  const redirDetail = (id) => {
+    setDetail(id)
+    setPage(pagesMapping.detail)
+  }
+  
   return (
     <div className="container">
 			<div className="row">
@@ -29,7 +35,7 @@ function Home() {
                     <h6 className="card-subtitle mb-2 text-muted">{item.tagline || "-"}</h6>
                     <p className="card-text text-justify"><strong>Overview: </strong>{item.overview.slice(0,50)} ...</p>
                     <h6 className="card-subtitle mb-2 font-weight-bold">({item.vote_average || "-"})</h6>
-                    <a onClick={() => setPage(pagesMapping.detail)} className="card-link btn btn-success">Details</a>
+                    <a onClick={() => redirDetail(item.id)} className="card-link btn btn-success">Details</a>
                   </div>
                 </div>)
               })

@@ -18,11 +18,11 @@ export default function Router({ children }) {
   /* Set the default page to Home if not specified otherwise in the URL */
   const [page, setPage] = useState(urlPath || pagesMapping.home)
   
-  const [detail, setDetail] = useState(urlPath || pagesMapping.home)
+  const [detail, setDetail] = useState(862)
 
   const value = useMemo(
-    () => ({ page, setPage }), 
-    [page, setPage]
+    () => ({ page, setPage, detail, setDetail }), 
+    [page, setPage, detail, setDetail]
   )
   
   return (
