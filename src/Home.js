@@ -29,7 +29,7 @@ function Home() {
             {
               movies.map(item => {
                 return (
-                <div className="card mt-2" style={{maxWidth: "250px"}}>
+                <div className="card mt-2" style={{maxWidth: "250px"}} key={item.id}>
                   <div className="card-body">
                     <h5 className="card-title">{item.title}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">{item.tagline || "-"}</h6>

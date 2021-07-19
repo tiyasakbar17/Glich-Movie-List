@@ -19,9 +19,13 @@ function Detail() {
     <div className="container mt-5">
       <div class="jumbotron">
         <h1 class="display-4">{movie.title}</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <span className="text-muted">{movie.status}</span>
+        <br/>
+        <span>Release Date: {movie.release_date}</span>
+        <p>Run Time: {movie.runtime} minutes</p>
+        <p class="lead">{movie.tagline || "-"}</p>
         <hr class="my-4"/>
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>{movie.overview}</p>
         <p class="lead">
           <a class="btn btn-primary btn-lg" onClick={()=>setPage(pagesMapping.home)} role="button">Back</a>
         </p>
