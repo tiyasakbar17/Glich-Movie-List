@@ -1,38 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Home from './Home'
+import Detail from './Detail'
+import { pagesMapping, RoutingContext } from './Routing'
 
 function App() {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    async function getData() {
-      const response = await fetch('/api/movies');
-      const payload = await response.json();
-      setMovies(payload.data);
-    }
-    getData();
-  }, []);
+  const { page } = useContext(RoutingContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and your changes will live-update automatically.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>Nice Movies:</p>
-        <p>{JSON.stringify(movies)}</p>
-        
-      </header>
-    </div>
-  );
+    <>
+      {(pagesMapping.home === page) && <Home />}
+      {(pagesMapping.detail === page) && <Detail />}
+    </>
+  )
 }
 
 export default App;
