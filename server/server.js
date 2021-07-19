@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const data = require("./movies_metadata.json")
 
 const app = express();
 
@@ -24,7 +25,14 @@ app.get("/api/ping", (request, response) => {
 // A mock route to return some data.
 app.get("/api/movies", (request, response) => {
   console.log("❇️ Received GET request to /api/movies");
-  response.json({ data: [{ id: 1, name: '1' }, { id: 2, name: '2' }] });
+  response.json({ data: data });
+});
+
+// A mock route to return a data.
+app.get("/api/movie/:id", (request, response) => {
+  console.log("❇️ Received GET request to /api/movies");
+  const selectedData = data.find(item => item.id == request.params.id)
+  response.json({ data: selectedData });
 });
 
 // Express port-switching logic
